@@ -11,10 +11,14 @@ const adventurer = {
       Leo: {
         name: "Frank",
         type: "Flea",
-        belongings: ["hat", "sunglasses"]
+        belongings: ["hat", "sunglasses"],
       },
-    },
+             },
     type: "Cat",
+  },
+  roll(mod = 0) {
+    const result = Math.floor(Math.random() * 20) + 1 + mod;
+    console.log(`${this.name} rolled a ${result}.`);
   },
 };
 
@@ -25,3 +29,7 @@ console.log(adventurer.inventory[2]);
 for (const x in adventurer) {
   console.log(adventurer[x]);
 }
+
+
+//calling the method roll to test 
+adventurer.roll()
