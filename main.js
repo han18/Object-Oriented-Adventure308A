@@ -37,7 +37,7 @@ adventurer.roll();
 class Character {
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.MAX_HEALTH = 100;
     this.inventory = [];
   }
   roll(mod = 0) {
@@ -64,7 +64,8 @@ class Adventurer extends Character {
     constructor (name, role) { // role is now extending the class Charactor properties 
       super(name);
       // Adventurers have specialized roles.
-      this.role = role;
+    //   this.role = role;
+    this.role = ["Fighter", "Healer", "Wizard", "Defender"] // adding static properties
       // Every adventurer starts with a bed and 50 gold coins.
       this.inventory.push("bedroll", "50 gold coins");
     }
@@ -75,26 +76,32 @@ class Adventurer extends Character {
     }
   }
 
-// creating a and extending a companion class 
+// creating and extending a companion class 
 
 class Companion extends Character {
     constructor(name, type, eatMeat, legs) {
         super(name);
         this.type = type;
-        this.eatMeat = eatMeat;
+        this.eatMeat = eatMeat = true;
         this.legs = legs;
     }
 
     walk(){
-        return ` ${this.name} is walks with ${legs}`
+        return ` ${this.name} walks with ${legs}`
     }
 }
+
+
+const newRobin = new Companion("Birdy", "bird", "scarf and shoes", true, 2 );
+console.log(newRobin);
+
+// Part 4: Class Uniforms --- added the static properties
 
 
 
 
 //=======================================================================
-// my coding practice to review the OOP processs
+// my coding practice to review the OOP process
   class Person {
     constructor(name, age, city) {
         this.name = name;
