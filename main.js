@@ -55,6 +55,7 @@ robin.companion.companion = new Character("Frank");
 robin.companion.companion.type = "Flea";
 robin.companion.companion.inventory = ["small hat", "sunglasses"];
 
+robin.companion.companion.roll();
 
 // Part 3: Class Features
 // extending a class, the “child” class inherits all properties of its parents Character
@@ -76,6 +77,9 @@ class Adventurer extends Character {
     }
     
   }
+
+const adventurerRobin = new Adventurer("Robin", "Fighter");
+const adventurerLeo = new Adventurer("Leo", "Healer");
 
 // creating and extending a companion class 
 
