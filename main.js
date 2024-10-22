@@ -65,7 +65,7 @@ class Adventurer extends Character {
       super(name);
       // Adventurers have specialized roles.
     //   this.role = role;
-    this.role = ["Fighter", "Healer", "Wizard", "Defender"] // adding static properties
+       this.role = ["Fighter", "Healer", "Wizard", "Defender"] // adding static properties
       // Every adventurer starts with a bed and 50 gold coins.
       this.inventory.push("bedroll", "50 gold coins");
     }
@@ -74,6 +74,7 @@ class Adventurer extends Character {
       console.log(`${this.name} is scouting ahead...`);
       super.roll();
     }
+    
   }
 
 // creating and extending a companion class 
@@ -87,7 +88,7 @@ class Companion extends Character {
     }
 
     walk(){
-        return ` ${this.name} walks with ${legs}`
+        return `${this.name} walks with ${legs}`
     }
 }
 
