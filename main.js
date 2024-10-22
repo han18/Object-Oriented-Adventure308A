@@ -57,7 +57,7 @@ robin.companion.companion.inventory = ["small hat", "sunglasses"];
 
 
 // Part 3: Class Features
-// extending a class, the “child” class inherits all properties of its parents
+// extending a class, the “child” class inherits all properties of its parents Character
 
 
 class Adventurer extends Character {
@@ -75,19 +75,26 @@ class Adventurer extends Character {
     }
   }
 
-// creating a companion class 
+// creating a and extending a companion class 
 
-class Companion {
-    constructor(name, type,) {
-        this.name = name;
+class Companion extends Character {
+    constructor(name, type, eatMeat, legs) {
+        super(name);
         this.type = type;
+        this.eatMeat = eatMeat;
+        this.legs = legs;
+    }
+
+    walk(){
+        return ` ${this.name} is walks with ${legs}`
     }
 }
 
 
 
 
-// my coding practice of using objects
+//=======================================================================
+// my coding practice to review the OOP processs
   class Person {
     constructor(name, age, city) {
         this.name = name;
@@ -104,7 +111,17 @@ class Companion {
 class Human extends Person {
     constructor(name, age, city, country) { // this means we are extending the Person class with the original properties to not duplicate it and adding more properties 
         // we extended the new property country
+        //super means we call the main class constructor and call its params/arguments again 
+        super(name, age, city)
+        this.country = country;
 
     }
 
 }
+
+const human1 = new Human("jack", "19", "Bronx", "Canada");
+
+console.log(human1);
+
+const person2 = new Person("Jole", "30", "Queens", "Japan"); // japan will not work because its not the extended class with new properties country
+console.log(person2)
