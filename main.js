@@ -35,9 +35,10 @@ adventurer.roll();
 
 // this class is the template object
 class Character {
-  constructor(name) {
+    static MAX_HEALTH = 100;  // adding the static 
+    
+    constructor(name) {
     this.name = name;
-    this.MAX_HEALTH = 100;
     this.inventory = [];
   }
   roll(mod = 0) {
@@ -62,11 +63,15 @@ robin.companion.companion.roll();
 
 
 class Adventurer extends Character {
+    static roles = ["Fighter", "Healer", "Wizard"]; // the static roles
     constructor (name, role) { // role is now extending the class Charactor properties 
       super(name);
+      if (!Adventurer.roles.includes(role)) {
+        throw new Error("Invalid role!");
+      }
       // Adventurers have specialized roles.
     //   this.role = role;
-       this.role = ["Fighter", "Healer", "Wizard", "Defender"] // adding static properties
+    //    this.role = ["Fighter", "Healer", "Wizard", "Defender"] // adding static properties
       // Every adventurer starts with a bed and 50 gold coins.
       this.inventory.push("bedroll", "50 gold coins");
     }
@@ -101,6 +106,32 @@ const newRobin = new Companion("Birdy", "bird", "scarf and shoes", true, 2 );
 console.log(newRobin);
 
 // Part 4: Class Uniforms --- added the static properties
+
+// Part 5: Gather your Party
+class AdventurerFactory {
+    constructor(role) {
+      this.role = role;
+      this.adventurers = [];
+    }
+  
+    generate(name) {
+      const newAdventurer = new Adventurer(name, this.role);
+      this.adventurers.push(newAdventurer);
+      return newAdventurer;
+    }
+  
+    findByIndex(index) {
+      return this.adventurers[index];
+    }
+  
+    findByName(name) {
+      return this.adventurers.find(a => a.name === name);
+    }
+  }
+  
+  const healerFactory = new AdventurerFactory("Healer");
+  const robin = healerFactory.generate("Robin");
+  
 
 
 
