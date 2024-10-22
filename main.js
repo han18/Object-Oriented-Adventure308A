@@ -39,6 +39,7 @@ class Character {
     
     constructor(name) {
     this.name = name;
+    this.health = 100;
     this.inventory = [];
   }
   roll(mod = 0) {
@@ -75,6 +76,22 @@ class Adventurer extends Character {
       // Every adventurer starts with a bed and 50 gold coins.
       this.inventory.push("bedroll", "50 gold coins");
     }
+
+    // creating a method deul() within the adventure extend class
+    duel(opposing) {
+        while (this.health > 50 && opposing.health > 50) {
+          const myRoll = this.roll();
+          const opponentRoll = opposing.roll();
+          if (myRoll > opponentRoll) {
+            opposing.health -= 1;
+          } else {
+            this.health -= 1;
+          }
+          console.log(`${this.name} (Health: ${this.health}) vs ${opposing.name} (Health: ${opposing.health})`);
+        }
+        const winner = this.health > 50 ? this.name : opposing.name;
+        console.log(`${winner} wins the duel!`);
+      }
     // Adventurers have the ability to scout ahead of them.
     scout () {
       console.log(`${this.name} is scouting ahead...`);
@@ -85,6 +102,11 @@ class Adventurer extends Character {
 
 const adventurerRobin = new Adventurer("Robin", "Fighter");
 const adventurerLeo = new Adventurer("Leo", "Healer");
+
+const adventurerOne = new Adventurer("Robin", "Fighter");
+const adventurerTwo = new Adventurer("Leo", "Healer");
+
+// adventurerOne.duel(adventurerTwo);
 
 // creating and extending a companion class 
 
@@ -130,8 +152,9 @@ class AdventurerFactory {
   }
   
   const healerFactory = new AdventurerFactory("Healer");
-  const robin = healerFactory.generate("Robin");
+  const robinTwo = healerFactory.generate("Robin");
   
+//   Part 6: Developing Skills --- added the duel to the extened adventure 
 
 
 
